@@ -21431,34 +21431,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-		"./2016/20161025 Why you dont need a CMS/blog.md": __webpack_require__(173),
-		"./blog.md": __webpack_require__(175),
-		"./blog2.md": __webpack_require__(176)
+		"./2016/20161025 New web precence/blog.md": __webpack_require__(173)
 	};
 
 /***/ },
 /* 173 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "<h2 id=\"this-is-fucking-great-\">This is fucking great!</h2>\n<p>I Just added the image of an unicorn!</p>\n<p><img src=\"" + __webpack_require__(174) + "\" alt=\"Tiny little unicorn!\"></p>\n<p>This is soo sweet!</p>\n";
-
-/***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "d8c96d907643e3361cb74baf7fb61514.jpg";
-
-/***/ },
-/* 175 */
 /***/ function(module, exports) {
 
-	module.exports = "<h1 id=\"you-really-dont-need-a-cms\">You really dont need a CMS</h1>\n<p>Because webpack can do it all for you. I swear!</p>\n";
-
-/***/ },
-/* 176 */
-/***/ function(module, exports) {
-
-	module.exports = "<h1 id=\"this-is-my-second-blog\">This is my second blog</h1>\n<p>I do think this idea is gonna be great! Really!</p>\n<pre><code>this is a code block\n</code></pre>";
+	module.exports = "<h2 id=\"my-new-web-presence\">My new web presence</h2>\n<p>In a couple of days, my new web presence will show up here. Just stay patient.</p>\n";
 
 /***/ }
 /******/ ]);
