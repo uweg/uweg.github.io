@@ -34,7 +34,7 @@
 </div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">January 20, 2017</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="extract-styles">Extract styles</h1>
 <p>To reduce the size of the JavaScript bundle, it can be a good idea to extract the styles into a separate <code>.css</code> file for the production build. This is quite easy with webpack, using the <a href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin</a>. To enable it, first initialize the plugin:</p>
 <pre><code class="lang-js">var ExtractTextPlugin = require(&#39;extract-text-webpack-plugin&#39;);
-var extractLESS = new ExtractTextPlugin(&#39;styles/[name].less&#39;);
+var extractLESS = new ExtractTextPlugin(&#39;styles/[name].css&#39;);
 </code></pre>
 <p>Then replace the loaders for <code>.less</code> files from the development configuration:</p>
 <pre><code class="lang-js">module.exports.module.loaders = module.exports.module.loaders.filter(l =&gt; String(l.test) !== String(/\.less$/));
