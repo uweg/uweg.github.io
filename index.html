@@ -1,4 +1,4 @@
-<html><head><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="app.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class=""><div><div class="_3MqAN7tezej4SSAbTmSEU0"><div class="_2A9JiSIm3an8uWVyKeaP9N">uweg.github.io</div><div class="_2qUWYN3yxUrcdowGt6joVI"><div>welcome to my website!</div><hr style="margin-top:20px;"/><div>This website is to write down my ideas and solutions for problems I had. I make it public because maybe someone else will find something useful. Also, of course, it is a little playground for me to test the latest frameworks and stuff. Feel free to contact me, if you want to discuss a topic in greater depth.</div></div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">January 24, 2017</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="pre-rendering">Pre-rendering</h1>
+<html><head><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/app.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class=""><div><div class="_3MqAN7tezej4SSAbTmSEU0"><div class="_2A9JiSIm3an8uWVyKeaP9N">uweg.github.io</div><div class="_2qUWYN3yxUrcdowGt6joVI"><div>welcome to my website!</div><hr style="margin-top:20px;"/><div>This website is to write down my ideas and solutions for problems I had. I make it public because maybe someone else will find something useful. Also, of course, it is a little playground for me to test the latest frameworks and stuff. Feel free to contact me, if you want to discuss a topic in greater depth.</div></div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20170124-prerendering">/blogs/20170124-prerendering</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 24, 2017</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="pre-rendering">Pre-rendering</h1>
 <p>Today, i enabled pre-rendering for my website. This means that the code of the website is executed at build-time and only the ready-made HTML is served to the client later. This speeds up the rendering of the page in the client, because the browser only has to process the HTML (and not tons of JavaScript).</p>
 <p>For this site, this means that 448KB of JavaScript are replaced with roughly 20KB of HTML. I did not measure loading time but it sure is much faster. The only drawback is, that the configuration is a little bit harder to get right. But since my website currently has no routes, it was not too hard. Of course, there is also a webpack plugin for this: <a href="https://www.npmjs.com/package/static-site-generator-webpack-plugin">static-site-generator-webpack-plugin</a>. It is well documented and also has some popularity; two main criteria to select a JavaScript framework.</p>
 <p>First of all, the entry point of the website must return a function that returns the rendered HTML:</p>
@@ -31,7 +31,7 @@
 ]
 </code></pre>
 <p><code>paths</code> is an array of all paths; in my case just <code>[&#39;/&#39;]</code>. Of course, my example is very trivial but i think this approach will also scale to bigger sites.</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">January 20, 2017</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="extract-styles">Extract styles</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20170120-extract-styles">/blogs/20170120-extract-styles</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 20, 2017</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="extract-styles">Extract styles</h1>
 <p>To reduce the size of the JavaScript bundle, it can be a good idea to extract the styles into a separate <code>.css</code> file for the production build. This is quite easy with webpack, using the <a href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin</a>. To enable it, first initialize the plugin:</p>
 <pre><code class="lang-js">var ExtractTextPlugin = require(&#39;extract-text-webpack-plugin&#39;);
 var extractLESS = new ExtractTextPlugin(&#39;styles/[name].css&#39;);
@@ -47,7 +47,7 @@ module.exports.module.loaders.push({ test: /\.less$/, loader: extractLESS.extrac
 ]
 </code></pre>
 <p>Enabling this might lead to better performance because the browser is optimized to handle <code>css</code> files and not to load styles from JavaScript. However, the configuration effort is a little bit bigger and I do not recommend this for the development environment.</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">January 19, 2017</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="webpack-type-definitions">Webpack type definitions</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20170119-webpack-tyings">/blogs/20170119-webpack-tyings</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 19, 2017</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="webpack-type-definitions">Webpack type definitions</h1>
 <p>Today, i finally found the official TypeScript type definitions for the webpack client side runtime: <a href="https://www.npmjs.com/package/@types/webpack-env">@types/webpack-env</a>. Before, i always wrote my own little <code>.d.ts</code> file which is no longer needed now. Of course, i was quite sure that some sort of typings must exist out there but i just was too lazy to search for it. For the code of this website, there was just a little change needed:</p>
 <pre><code class="lang-ts">// before:
 const styles: {
@@ -64,7 +64,7 @@ const styles = require&lt;{
 }&gt;(&#39;./Header.less&#39;);
 </code></pre>
 <p><code>require</code> now has a generic return value instead of returning just <code>any</code>. This doesn&#39;t bring any real benefit but of course, it&#39;s always nice to &quot;do it the right way&quot;.</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">January 12, 2017</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="using-tslint">Using tslint</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20170112-using-tslint">/blogs/20170112-using-tslint</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 12, 2017</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="using-tslint">Using tslint</h1>
 <p>To improve the quality of your TypeScript code, i suggest using <a href="https://palantir.github.io/tslint/">tslint</a> which has plugins for many editors, for example for <a href="https://marketplace.visualstudio.com/items?itemName=eg2.tslint">Visual Studio Code</a>.
 I suggest also to include it in your build process. When you are using webpack, there is a sophisticated <a href="https://www.npmjs.com/package/tslint-loader">loader</a> for it. Simply add it as a <code>preLoader</code>:</p>
 <pre><code class="lang-js">preLoaders: [
@@ -76,7 +76,7 @@ I suggest also to include it in your build process. When you are using webpack, 
   emitErrors: true
 }
 </code></pre>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">December 30, 2016</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="webpack-2">Webpack 2</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20161230-webpack-2">/blogs/20161230-webpack-2</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">December 30, 2016</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="webpack-2">Webpack 2</h1>
 <p>Since <a href="https://webpack.js.org/">webpack 2</a> will be released soon (currently the are shipping version <code>2.2.0-rc.3</code>), i fiddled around with it a little bit. It does practically the same thing as the old version but of course, it is improved in many points. The feature i heard most about is &quot;tree-shaking&quot; which removes all unused code from the generated bundle.</p>
 <h2 id="migration">Migration</h2>
 <p>I have set up many projects with webpack 1 and the migration to webpack 2 is not very hard. The API of the configuration file is a little bit different but the documentation is good enough to make the process straightforward. I created a little project to point out the differences:</p>
@@ -128,10 +128,10 @@ Time: 3987ms
     Asset    Size  Chunks             Chunk Names
 bundle.js  138 kB       0  [emitted]  main
 </code></pre><p>So, while the compile time was reduced, the bundle size is also 37% smaller. This is very impressive because all the used libraries are the same and all i had to do was to use the new webpack version. I&#39;m looking forward to use webpack 2 on a bigger project (but i think i&#39;ll wait until the final version comes out).</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">November 16, 2016</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="updates">Updates</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20161116-updates">/blogs/20161116-updates</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">November 16, 2016</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="updates">Updates</h1>
 <p>Today, i only updated some libraries. The biggest change is the one from React 15.3.2 to react 15.4.0 which was <a href="https://facebook.github.io/react/blog/2016/11/16/react-v15.4.0.html">announced</a> today. None of the changes do really affect my website but i love to see that it&#39;s going forward.</p>
 <p>Also, i had some thoughts about routing in the last days. Since github pages (where this page is hosted on) doesn&#39;t support redirects, it is a little bit hard to make a single page application. I think my approach will be to pre-render everything with webpack and then deploy just the HTML files. To make this happen, i will have to put in a bit of investigation in this direction. I hope that i&#39;ll get to it soon.</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">November 13, 2016</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="handling-imports-in-typescript">Handling imports in TypeScript</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20161113-handling-imports-in-typescript">/blogs/20161113-handling-imports-in-typescript</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">November 13, 2016</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="handling-imports-in-typescript">Handling imports in TypeScript</h1>
 <p>Handling <code>import</code> statements in TypeScript is a bit annoying sometimes, especially when you come from a language like C# where the IDE handles all this for you. Luckily, there is some help in sight with TypeScript 2.1 coming soon. On the <a href="https://github.com/Microsoft/TypeScript/wiki/Roadmap">roadmap</a>, the feature <em><a href="https://github.com/Microsoft/TypeScript/issues/188">Completions in imports and triple-slash reference paths</a></em> is announced. I did not test it yet because it doesn&#39;t seem to be available in the release candidate but at least it sounds promising.</p>
 <h2 id="typescript-hero">TypeScript Hero</h2>
 <p>Since i&#39;m not the only one with this problem, there are a number of plugins available for various IDEs out there to address the problem. I tested a few of them but most doesn&#39;t seem to work very well. In the end, i sticked with <a href="https://marketplace.visualstudio.com/items?itemName=rbbit.typescript-hero">TypeScript Hero</a> which does its job good enough for me.</p>
@@ -139,7 +139,7 @@ bundle.js  138 kB       0  [emitted]  main
 <p><img src="cbd0469390df0f25d3e82ba25ffb84e6.png" alt="A fitting import is being suggested"></p>
 <p>This saves a lot of work and in most cases, it works quite well. However, sometimes it refuses to find some of my imports and I don&#39;t really know what the reason for this might be. In such a situation, it can help to rebuild the cache of the plugin.</p>
 <p>I highly recommend this plugin for everyone that uses TypeScript on a regular basis because it saves some serious time. And maybe (hopefully), it even will no longer be needed because TypeScript 2.1 brings the functionality by itself.</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">November 11, 2016</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="mobx-createtransformer">MobX createTransformer</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20161111-mobx-createtransformer">/blogs/20161111-mobx-createtransformer</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">November 11, 2016</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="mobx-createtransformer">MobX createTransformer</h1>
 <p>The <a href="http://mobxjs.github.io/mobx/refguide/create-transformer.html"><code>createTransformer</code></a> functionality in the MobX framework was something i struggled a bit to understand until now. This blog post should finally help me to get a grasp of it.</p>
 <p>This functionality can be used to store the result of a transformation of an observable an then server this stored value until the observable has changed.</p>
 <p>It also can be used to transform one tree of observable objects into another tree of observable objects. This reminds me a little bit of <a href="http://redux.js.org/">Redux</a>, another very popular state handling library for React.</p>
@@ -166,7 +166,7 @@ Transformer evaluated.
 8
 8
 </code></pre><p><code>transformer</code> will only be re-evaluated when the underlying observable changes. of course, this example is very trivial but the mechanism is very powerful to create more complex things without losing more performance as needed.</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">November 10, 2016</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="typescript-2-1-rc">TypeScript 2.1 RC</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20161110-typescript-2.1-rc">/blogs/20161110-typescript-2.1-rc</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">November 10, 2016</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="typescript-2-1-rc">TypeScript 2.1 RC</h1>
 <p>Today, the release candidate of TypeScript 2.1 was <a href="https://blogs.msdn.microsoft.com/typescript/2016/11/08/typescript-2-1-rc-better-inference-async-functions-and-more/">announced</a> by Daniel Rosenwasser. Of course, i had to check it out and play with it. There are some new features i waited for like async / await for ES5 or better type inference.</p>
 <h2 id="better-usage-of-implicit-any">Better usage of implicit any</h2>
 <p>When you don&#39;t disable the use implicit any types, TypeScript will now infer the type based on whats later assigned to the value. This also works for arrays.</p>
@@ -183,7 +183,7 @@ test.push(&#39;a&#39;);
 <h2 id="async-await-in-es5">Async / await in ES5</h2>
 <p>This is something i waited for a long time and finally it&#39;s here! I hope that it gets now easier to write asynchronous code and also reduce the complexity.</p>
 <p>We do have this for a while now in C# and it&#39;s quite handy to use. Also i can think of a couple of examples in some projects i work on where it would make my life a lot easier. Of course i will have to wait for the final version of TypeScript 2.1.</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">November 6, 2016</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="styles-and-new-libraries">Styles and new libraries</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20161106-styles-and-new-libraries">/blogs/20161106-styles-and-new-libraries</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">November 6, 2016</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="styles-and-new-libraries">Styles and new libraries</h1>
 <p>Today, i added styles which i write with <a href="http://lesscss.org/">LESS</a>, a CSS preprocessor i also use at work. I like it pretty much and it has all the features needed to style a website properly. Also, the webpack integration is really good; there is an extra <a href="https://github.com/webpack/less-loader">loader</a> for it that does all the work.</p>
 <p>I added this to the <code>loaders</code> section of my webpack configuration:</p>
 <pre><code class="lang-javascript">{ test: /\.less$/, loader: &#39;style!css!less&#39; }
@@ -191,11 +191,11 @@ test.push(&#39;a&#39;);
 <p>This means, all LESS files are first converted to CSS and then passed to the other webpack loaders to do their magic. There are not much styles yet but at least, everything is ready to add them.</p>
 <h2 id="and-libraries">And libraries</h2>
 <p>If you know me, you might also know that i like the <a href="http://mobxjs.github.io/mobx/">MobX</a> library. It provides a reactive approach to programming with React and is very close to <a href="http://knockoutjs.com/">Knockout</a>. Further, i added <a href="https://github.com/mobxjs/mobx-react">mobx-react</a> that connects MobX with React. Now i&#39;m ready to add some more advanced features to the site.</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">November 2, 2016</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="a-new-font">A new font</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20161102-a-new-font">/blogs/20161102-a-new-font</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">November 2, 2016</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="a-new-font">A new font</h1>
 <p>Today, I added a font to the site. This is a quite easy step that can make much of a difference. Luckily, Google offer a good tools to browser for fonts: <a href="https://fonts.google.com/">Google Fonts</a></p>
 <p>Here you can browser through hundreds of fonts, compare them to each other and finally generate a link to embed id in the website.</p>
 <p>I have chosen the Droid family which seems quite pretty to me. Further, it provides a variety of different styles, with and without serifs.</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">November 1, 2016</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="adding-a-production-configuration-to-webpack">Adding a production configuration to webpack</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20161101-adding-a-production-config-for-webpack">/blogs/20161101-adding-a-production-config-for-webpack</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">November 1, 2016</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="adding-a-production-configuration-to-webpack">Adding a production configuration to webpack</h1>
 <p>Today, i added a production configuration for webpack to my project that extends my normal configuration. My normal configuration looks like this:</p>
 <pre><code>var webpack = require(&#39;webpack&#39;);
 var path = require(&#39;path&#39;);
@@ -242,7 +242,7 @@ module.exports = Object.assign(config, {
 });
 </code></pre><p>The concept is to import the normal configuration and then add more properties or override some of the existing. All the entry points and loaders and other general stuff stays the same. The big advantage of this is that i only have to change my configuration on one place and not have to keep multiple files in sync.</p>
 <p>Also, i added some plugins to minimize the file size dramatically (from somewhere around 800KB down to 148KB).</p>
-</div></div><hr/></div><div><div class="_1UYsC4Q4wuI--I2w_n8tTu"><div class="_3D06YYwDNmc2ooYT5_dCWC">October 27, 2016</div><div class="hSZe1bqmwF-ZnAOw2pBA8"><h1 id="all-you-need-is-webpack">All you need is webpack</h1>
+</div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><a href="/blogs/20161027-a-simple-webiste-for-a-developer">/blogs/20161027-a-simple-webiste-for-a-developer</a><div class="_3uxHLI_NTcR3_FAO-2OItJ">October 27, 2016</div><div class="_34oSE90yaq6CDdZ4hqdJXz"><h1 id="all-you-need-is-webpack">All you need is webpack</h1>
 <p>If you are a web developer and plan to do your own little blog, you don&#39;t really need a full-blown CMS. In fact, all you need is Visual Studio Code and a couple of JavaScript libraries. For this blog, i use the following libraries:</p>
 <ul>
 <li>React: This gives me the opportunity to add a little HTML to the site without actually writing HTML. Let&#39;s be honest: Why should i write in a language that gives me just nothing when I also could have TypeScript?</li>
