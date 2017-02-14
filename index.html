@@ -1,4 +1,12 @@
-<html><head><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/app.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class=""><div><div class="_3MqAN7tezej4SSAbTmSEU0"><div class="_2A9JiSIm3an8uWVyKeaP9N">uweg.github.io</div><div class="_2qUWYN3yxUrcdowGt6joVI"><div>welcome to my website!</div><hr style="margin-top:20px;"/><div>This website is to write down my ideas and solutions for problems I had. I make it public because maybe someone else will find something useful. Also, of course, it is a little playground for me to test the latest frameworks and stuff. Feel free to contact me, if you want to discuss a topic in greater depth.</div></div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">February 1, 2017</div><a href="/blogs/20170201-routing-ready" class="_2MgbiExJ9FgKVVMx-qz-kl">Routing ready</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Today, i finally added routing to my website, which means that you now can access every blog post directly. Just click on a title to check it out. It was a little bit tricky to make everything work with pre-rendering but of course, I got it working after fiddling around for a bit.</p> <p>On the webpack side, you must pass all possible paths to the <a href=https://www.npmjs.com/package/static-site-generator-webpack-plugin>static-site-generator-webpack-plugin</a>:</p> <pre><code class=lang-js>const paths = [
+<html><head><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/app.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class=""><div><div class="_3MqAN7tezej4SSAbTmSEU0"><div class="_2A9JiSIm3an8uWVyKeaP9N">uweg.github.io</div><div class="_2qUWYN3yxUrcdowGt6joVI"><div>welcome to my website!</div><hr style="margin-top:20px;"/><div>This website is to write down my ideas and solutions for problems I had. I make it public because maybe someone else will find something useful. Also, of course, it is a little playground for me to test the latest frameworks and stuff. Feel free to contact me, if you want to discuss a topic in greater depth.</div></div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">February 14, 2017</div><a href="/blogs/20170214-webpack-2-released" class="_2MgbiExJ9FgKVVMx-qz-kl">Webpack 2 released</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Webpack 2 is finally <a href=https://medium.com/webpack/webpack-2-2-the-final-release-76c3d43bf144#.4x1t6gv16>released and ready for production</a>. Of course, i already updated this site and there were no bigger issues. The only thing that caused me a little bit of trouble was the <a href=https://www.npmjs.com/package/tslint-loader>tslint-loader</a> which was included as a <code>preLoader</code>. Unfortunately, <code>preLoaders</code> are no longer supported by webpack 2. But the solution is easy: Just include it as a normal <code>rule</code> and set <code>enforce</code> to <code>&#39;pre&#39;</code>.</p> <pre><code class=lang-js>{
+  test: /\.tsx?$/,
+  loader: &#39;tslint-loader&#39;,
+  enforce: &#39;pre&#39;,
+  options: {
+    emitErrors: true
+  }
+}
+</code></pre> </div></div><hr/></div><div><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">February 1, 2017</div><a href="/blogs/20170201-routing-ready" class="_2MgbiExJ9FgKVVMx-qz-kl">Routing ready</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Today, i finally added routing to my website, which means that you now can access every blog post directly. Just click on a title to check it out. It was a little bit tricky to make everything work with pre-rendering but of course, I got it working after fiddling around for a bit.</p> <p>On the webpack side, you must pass all possible paths to the <a href=https://www.npmjs.com/package/static-site-generator-webpack-plugin>static-site-generator-webpack-plugin</a>:</p> <pre><code class=lang-js>const paths = [
   &#39;/&#39;,
   ...path.allPaths
 ];
@@ -58,7 +66,7 @@ const styles: {
   subtitle: string
 } = require(&#39;./Header.less&#39;);
 
-//after:
+// after:
 const styles = require&lt;{
   header: string,
   title: string,
