@@ -1,7 +1,12 @@
-<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 12, 2017</div><a href="/blogs/20170112-using-tslint" class="_2MgbiExJ9FgKVVMx-qz-kl">Using tslint</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>To improve the quality of your TypeScript code, i suggest using <a href=https://palantir.github.io/tslint/ >tslint</a> which has plugins for many editors, for example for <a href="https://marketplace.visualstudio.com/items?itemName=eg2.tslint">Visual Studio Code</a>. I suggest also to include it in your build process. When you are using webpack, there is a sophisticated <a href=https://www.npmjs.com/package/tslint-loader>loader</a> for it. Simply add it as a <code>preLoader</code>:</p> <pre><code class=lang-js>preLoaders: [
+<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 12, 2017</div><a href="/blogs/20170112-using-tslint" class="_2MgbiExJ9FgKVVMx-qz-kl">Using tslint</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>To improve the quality of your TypeScript code, i suggest using <a href="https://palantir.github.io/tslint/">tslint</a> which has plugins for many editors, for example for <a href="https://marketplace.visualstudio.com/items?itemName=eg2.tslint">Visual Studio Code</a>.
+I suggest also to include it in your build process. When you are using webpack, there is a sophisticated <a href="https://www.npmjs.com/package/tslint-loader">loader</a> for it. Simply add it as a <code>preLoader</code>:</p>
+<pre><code class="lang-js">preLoaders: [
   { test: /\.tsx?$/, loader: &#39;tslint&#39; }
 ]
-</code></pre> <p>You can also emit linting messages as errors to give them a little bit more weight. Just add this new entry to your webpack configuration:</p> <pre><code class=lang-js>tslint: {
+</code></pre>
+<p>You can also emit linting messages as errors to give them a little bit more weight. Just add this new entry to your webpack configuration:</p>
+<pre><code class="lang-js">tslint: {
   emitErrors: true
 }
-</code></pre> </div></div></div></div></body></html>
+</code></pre>
+</div></div></div></div></body></html>

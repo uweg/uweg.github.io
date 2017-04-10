@@ -1,9 +1,16 @@
-<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 20, 2017</div><a href="/blogs/20170120-extract-styles" class="_2MgbiExJ9FgKVVMx-qz-kl">Extract styles</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>To reduce the size of the JavaScript bundle, it can be a good idea to extract the styles into a separate <code>.css</code> file for the production build. This is quite easy with webpack, using the <a href=https://www.npmjs.com/package/extract-text-webpack-plugin>extract-text-webpack-plugin</a>. To enable it, first initialize the plugin:</p> <pre><code class=lang-js>var ExtractTextPlugin = require(&#39;extract-text-webpack-plugin&#39;);
+<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 20, 2017</div><a href="/blogs/20170120-extract-styles" class="_2MgbiExJ9FgKVVMx-qz-kl">Extract styles</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>To reduce the size of the JavaScript bundle, it can be a good idea to extract the styles into a separate <code>.css</code> file for the production build. This is quite easy with webpack, using the <a href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin</a>. To enable it, first initialize the plugin:</p>
+<pre><code class="lang-js">var ExtractTextPlugin = require(&#39;extract-text-webpack-plugin&#39;);
 var extractLESS = new ExtractTextPlugin(&#39;styles/[name].css&#39;);
-</code></pre> <p>Then replace the loaders for <code>.less</code> files from the development configuration:</p> <pre><code class=lang-js>module.exports.module.loaders = module.exports.module.loaders.filter(l =&gt; String(l.test) !== String(/\.less$/));
+</code></pre>
+<p>Then replace the loaders for <code>.less</code> files from the development configuration:</p>
+<pre><code class="lang-js">module.exports.module.loaders = module.exports.module.loaders.filter(l =&gt; String(l.test) !== String(/\.less$/));
 module.exports.module.loaders.push({ test: /\.less$/, loader: extractLESS.extract([&#39;css&#39;, &#39;less&#39;]) });
 // I think there is a better way for this but I&#39;m currently too lazy to look for it.
-</code></pre> <p>And finally add it to the plugins:</p> <pre><code class=lang-js>plugins: [
+</code></pre>
+<p>And finally add it to the plugins:</p>
+<pre><code class="lang-js">plugins: [
   extractLESS
 ]
-</code></pre> <p>Enabling this might lead to better performance because the browser is optimized to handle <code>css</code> files and not to load styles from JavaScript. However, the configuration effort is a little bit bigger and I do not recommend this for the development environment.</p> </div></div></div></div></body></html>
+</code></pre>
+<p>Enabling this might lead to better performance because the browser is optimized to handle <code>css</code> files and not to load styles from JavaScript. However, the configuration effort is a little bit bigger and I do not recommend this for the development environment.</p>
+</div></div></div></div></body></html>

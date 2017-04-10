@@ -1,4 +1,5 @@
-<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 19, 2017</div><a href="/blogs/20170119-webpack-type-definitions" class="_2MgbiExJ9FgKVVMx-qz-kl">Webpack type definitions</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Today, i finally found the official TypeScript type definitions for the webpack client side runtime: <a href=https://www.npmjs.com/package/@types/webpack-env>@types/webpack-env</a>. Before, i always wrote my own little <code>.d.ts</code> file which is no longer needed now. Of course, i was quite sure that some sort of typings must exist out there but i just was too lazy to search for it. For the code of this website, there was just a little change needed:</p> <pre><code class=lang-ts>// before:
+<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">January 19, 2017</div><a href="/blogs/20170119-webpack-type-definitions" class="_2MgbiExJ9FgKVVMx-qz-kl">Webpack type definitions</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Today, i finally found the official TypeScript type definitions for the webpack client side runtime: <a href="https://www.npmjs.com/package/@types/webpack-env">@types/webpack-env</a>. Before, i always wrote my own little <code>.d.ts</code> file which is no longer needed now. Of course, i was quite sure that some sort of typings must exist out there but i just was too lazy to search for it. For the code of this website, there was just a little change needed:</p>
+<pre><code class="lang-ts">// before:
 const styles: {
   header: string,
   title: string,
@@ -11,4 +12,6 @@ const styles = require&lt;{
   title: string,
   subtitle: string
 }&gt;(&#39;./Header.less&#39;);
-</code></pre> <p><code>require</code> now has a generic return value instead of returning just <code>any</code>. This doesn&#39;t bring any real benefit but of course, it&#39;s always nice to &quot;do it the right way&quot;.</p> </div></div></div></div></body></html>
+</code></pre>
+<p><code>require</code> now has a generic return value instead of returning just <code>any</code>. This doesn&#39;t bring any real benefit but of course, it&#39;s always nice to &quot;do it the right way&quot;.</p>
+</div></div></div></div></body></html>

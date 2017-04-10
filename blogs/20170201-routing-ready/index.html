@@ -1,4 +1,6 @@
-<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">February 1, 2017</div><a href="/blogs/20170201-routing-ready" class="_2MgbiExJ9FgKVVMx-qz-kl">Routing ready</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Today, i finally added routing to my website, which means that you now can access every blog post directly. Just click on a title to check it out. It was a little bit tricky to make everything work with pre-rendering but of course, I got it working after fiddling around for a bit.</p> <p>On the webpack side, you must pass all possible paths to the <a href=https://www.npmjs.com/package/static-site-generator-webpack-plugin>static-site-generator-webpack-plugin</a>:</p> <pre><code class=lang-js>const paths = [
+<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">February 1, 2017</div><a href="/blogs/20170201-routing-ready" class="_2MgbiExJ9FgKVVMx-qz-kl">Routing ready</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Today, i finally added routing to my website, which means that you now can access every blog post directly. Just click on a title to check it out. It was a little bit tricky to make everything work with pre-rendering but of course, I got it working after fiddling around for a bit.</p>
+<p>On the webpack side, you must pass all possible paths to the <a href="https://www.npmjs.com/package/static-site-generator-webpack-plugin">static-site-generator-webpack-plugin</a>:</p>
+<pre><code class="lang-js">const paths = [
   &#39;/&#39;,
   ...path.allPaths
 ];
@@ -6,7 +8,9 @@
 plugins: [
   new StaticSiteGeneratorPlugin(&#39;app&#39;, paths)
 ]
-</code></pre> <p>Then, on the React site, you can compose the correct content for every path:</p> <pre><code class=lang-ts>export default function (locals: { path: string }) {
+</code></pre>
+<p>Then, on the React site, you can compose the correct content for every path:</p>
+<pre><code class="lang-ts">export default function (locals: { path: string }) {
   const html = (
     &lt;html&gt;
       &lt;head&gt;
@@ -20,4 +24,7 @@ plugins: [
 
   return renderToStaticMarkup(html);
 }
-</code></pre> <p><code>getContentForPath(locals.path)</code> performs a very primitive routing to compose the content but i plan to use a library for this in future.</p> <p>I am very happy to see this work now because this is something a had in mind for quite some time. But I only have so much spare time to fiddle around with this stuff, you know.</p> </div></div></div></div></body></html>
+</code></pre>
+<p><code>getContentForPath(locals.path)</code> performs a very primitive routing to compose the content but i plan to use a library for this in future.</p>
+<p>I am very happy to see this work now because this is something a had in mind for quite some time. But I only have so much spare time to fiddle around with this stuff, you know.</p>
+</div></div></div></div></body></html>

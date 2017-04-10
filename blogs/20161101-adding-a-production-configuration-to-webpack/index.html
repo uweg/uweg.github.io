@@ -1,4 +1,5 @@
-<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">November 1, 2016</div><a href="/blogs/20161101-adding-a-production-configuration-to-webpack" class="_2MgbiExJ9FgKVVMx-qz-kl">Adding a production configuration to webpack</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Today, i added a production configuration for webpack to my project that extends my normal configuration. My normal configuration looks like this:</p> <pre><code>var webpack = require(&#39;webpack&#39;);
+<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">November 1, 2016</div><a href="/blogs/20161101-adding-a-production-configuration-to-webpack" class="_2MgbiExJ9FgKVVMx-qz-kl">Adding a production configuration to webpack</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Today, i added a production configuration for webpack to my project that extends my normal configuration. My normal configuration looks like this:</p>
+<pre><code>var webpack = require(&#39;webpack&#39;);
 var path = require(&#39;path&#39;);
 
 module.exports = {
@@ -22,7 +23,9 @@ module.exports = {
   },
   devtool: &#39;source-map&#39;,
 };
-</code></pre><p>As you can see, it is really simple. The entry point of the application is <code>./source/website.tsx</code> which then refers to all the other resources of the page. No optimization or what so ever is done.</p> <p>My newly added production configuration looks like this:</p> <pre><code>var webpack = require(&#39;webpack&#39;);
+</code></pre><p>As you can see, it is really simple. The entry point of the application is <code>./source/website.tsx</code> which then refers to all the other resources of the page. No optimization or what so ever is done.</p>
+<p>My newly added production configuration looks like this:</p>
+<pre><code>var webpack = require(&#39;webpack&#39;);
 var CleanWebpackPlugin = require(&#39;clean-webpack-plugin&#39;);
 var config = require(&#39;./webpack.config&#39;);
 
@@ -39,4 +42,6 @@ module.exports = Object.assign(config, {
     })
   ]
 });
-</code></pre><p>The concept is to import the normal configuration and then add more properties or override some of the existing. All the entry points and loaders and other general stuff stays the same. The big advantage of this is that i only have to change my configuration on one place and not have to keep multiple files in sync.</p> <p>Also, i added some plugins to minimize the file size dramatically (from somewhere around 800KB down to 148KB).</p> </div></div></div></div></body></html>
+</code></pre><p>The concept is to import the normal configuration and then add more properties or override some of the existing. All the entry points and loaders and other general stuff stays the same. The big advantage of this is that i only have to change my configuration on one place and not have to keep multiple files in sync.</p>
+<p>Also, i added some plugins to minimize the file size dramatically (from somewhere around 800KB down to 148KB).</p>
+</div></div></div></div></body></html>

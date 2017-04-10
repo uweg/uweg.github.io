@@ -1,12 +1,18 @@
-<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">February 16, 2017</div><a href="/blogs/20170216-glob-loader-vs-require.context" class="_2MgbiExJ9FgKVVMx-qz-kl">glob-loader vs require.context</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Until now, i used the <a href=https://www.npmjs.com/package/glob-loader>glob-loader</a> to get all blogs from the file system:</p> <pre><code class=lang-ts>const blogData = require&lt;{ [index: string]: string }&gt;(&#39;glob-loader!./../blogs.pattern&#39;);
+<html><head><title>uweg.github.io</title><link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" rel="stylesheet"/><link rel="stylesheet" type="text/css" href="/main.css"/></head><body style="margin:0;"><div class="_2FE2Ol8dGrN-YlQ4B4fd40"><div class="_2dNU0UjwUQ5PSy4ZPYMhir"><a href="/" class="_3MqAN7tezej4SSAbTmSEU0">uweg.github.io</a><div class="_3VsiRofGuWR73_fOfHb0RE"><div class="_3uxHLI_NTcR3_FAO-2OItJ">February 16, 2017</div><a href="/blogs/20170216-glob-loader-vs-require.context" class="_2MgbiExJ9FgKVVMx-qz-kl">glob-loader vs require.context</a><div class="_34oSE90yaq6CDdZ4hqdJXz"><p>Until now, i used the <a href="https://www.npmjs.com/package/glob-loader">glob-loader</a> to get all blogs from the file system:</p>
+<pre><code class="lang-ts">const blogData = require&lt;{ [index: string]: string }&gt;(&#39;glob-loader!./../blogs.pattern&#39;);
 Object.keys(blogData).forEach((key) =&gt; {
   // key is the path of the file
   const content = blogData[key];
 });
-</code></pre> <p>The actual pattern was in a separate file <code>blogs.pattern</code>:</p> <pre><code>./blogs/**/*.md
-</code></pre><p>Today, i discovered a better way to do this; just use the webpack feature <a href=https://webpack.js.org/guides/dependency-management/#require-context>require.context</a> that can recursively scan a directory for files which match a regular expression.</p> <pre><code class=lang-ts>const context = require.context(&#39;../blogs/&#39;, true, /blog\.md/);
+</code></pre>
+<p>The actual pattern was in a separate file <code>blogs.pattern</code>:</p>
+<pre><code>./blogs/**/*.md
+</code></pre><p>Today, i discovered a better way to do this; just use the webpack feature <a href="https://webpack.js.org/guides/dependency-management/#require-context">require.context</a> that can recursively scan a directory for files which match a regular expression.</p>
+<pre><code class="lang-ts">const context = require.context(&#39;../blogs/&#39;, true, /blog\.md/);
 context.keys().forEach((key) =&gt; {
   // key is the path of the file
   const content = context(key);
 });
-</code></pre> <p>The result is very similar but with the new solution, I need one less loader and fewer dependencies is always better.</p> </div></div></div></div></body></html>
+</code></pre>
+<p>The result is very similar but with the new solution, I need one less loader and fewer dependencies is always better.</p>
+</div></div></div></div></body></html>
